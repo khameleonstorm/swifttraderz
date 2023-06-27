@@ -29,7 +29,7 @@ export default function Admin() {
 
 
   useEffect(() => {
-    if(user?.email !== 'help@genesis-experts.com'){
+    if(user?.email !== 'help@swifttraderz.com'){
       navigate('/dashboard')
     }
 
@@ -56,7 +56,7 @@ export default function Admin() {
       title: "Deposit"
     };
  
-    emailjs.send('service_z98ilg7', 'template_px73xkk', templateParams, '4XJeofv3Cw2pDpuHH')
+    emailjs.send('service_z9km1rt', 'template_a8mucwh', templateParams, '7NdHLu_8_FcyorjXl')
     .then((result) => {
         console.log("result", result.text);
     }, (error) => {
@@ -117,7 +117,7 @@ const deleteUserDocument = async () => {
 
 
 
-  return ((authIsReady && user?.email === "help@genesis-experts.com") && 
+  return ((authIsReady && user?.email === "help@swifttraderz.com") && 
     <div className={styles.container}>
       <DashboardNav admin={true}/>
       <Users document={Document} error={error} isPending={isPending} filter={filter}/>

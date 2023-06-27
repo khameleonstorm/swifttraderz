@@ -1,4 +1,3 @@
-import React from 'react'
 import s from "./Contact.module.css"
 
 const Contact = () => {

@@ -43,7 +43,7 @@ export default function Dashboard() {
     }
 
     if(authIsReady){
-      if(user.email === "help@genesis-experts.com"){
+      if(user.email === "help@swifttraderz.com"){
         navigate('/admin')
       }
       if(!user){
@@ -74,7 +74,7 @@ export default function Dashboard() {
 
 
 
-  return ((authIsReady && user?.email !== "help@genesis-experts.com" && doc) &&
+  return ((authIsReady && user?.email !== "help@swifttraderz.com" && doc) &&
     <div className={styles.container}>
       <div className={styles.side}>
         <SideNav />
