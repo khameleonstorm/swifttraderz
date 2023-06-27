@@ -1,0 +1,108 @@
+.container{
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 30px 0;
+  background: #0a0909;
+  color: white;
+}
+
+.address{
+  width: 30%;
+}
+
+.logo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.logo img{
+  width: 150px;
+  filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.5));
+}
+
+.address p{
+  font-size: 1rem;
+  color: rgb(128, 128, 128);
+}
+
+.address h2{
+  font-size: 1rem;
+  color: rgb(181, 181, 181);
+}
+
+.links{
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.links h2{
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: rgb(181, 181, 181);
+}
+
+.links a{
+  font-size: .9rem;
+  color: rgb(128, 128, 128);
+}
+
+.links a:hover{
+  color: rgb(0, 163, 114);
+}
+
+.services{
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.services h2{
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: rgb(181, 181, 181);
+}
+
+.services a{
+  font-size: .8rem;
+  color: rgb(128, 128, 128);
+}
+
+.services a:hover{
+  color: rgb(0, 163, 114);
+}
+
+
+
+@media screen and (max-width: 800px){
+.container{
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.address{
+  width: 100%;
+}
+
+.links{
+  width: 100%;
+}
+
+.services{
+  width: 100%;
+}
+
+.socials{
+  width: 100%;
+}
+
+}

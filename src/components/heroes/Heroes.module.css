@@ -1,0 +1,53 @@
+.ctn{
+  width: 100%;
+  height: 100vh;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 150%;
+  display: flex;
+  align-items: center;
+}
+
+.wrapper{
+  width: 700px;
+  margin-left: 50px;
+}
+
+.title{
+  color: rgb(221, 221, 221);
+  font-size: 5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.title span{
+  color: #00b35f;
+}
+
+.subtitle{
+  color: rgb(222, 222, 222);
+  font-size: 20px;
+  font-weight: 200;
+}
+
+@media screen and (max-width: 768px){
+.ctn{
+  background-size: 450%;
+  height: 60vh;
+}
+
+.wrapper{
+  width: 100%;
+  margin-left: 20px;
+}
+
+.title{
+  font-size: 11vw;
+  font-weight: 600;
+}
+
+.subtitle{
+  font-size: 17px;
+}
+}

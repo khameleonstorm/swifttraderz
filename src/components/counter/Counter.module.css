@@ -1,0 +1,39 @@
+.ctn{
+  width: 100%;
+}
+
+.wrapper{
+  width: 100%;
+  max-width: 1170px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  text-align: center;
+  padding: 50px 0;
+  margin: 0 auto;
+}
+
+.count{
+  font-size: 6rem;
+  font-weight: 600;
+  color: #00b35f;
+}
+
+.count::after{
+  content: "+";
+  font-size: 3rem;
+  color: #f7ffee;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+@media screen and (max-width: 768px){
+.wrapper{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+}
