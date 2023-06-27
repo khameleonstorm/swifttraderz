@@ -22,16 +22,16 @@ let coin = {
     title: "Bitcoin",
     image: qr1,
     network: "BTC",
-    address: "bc1q3d0h3s2zspaw32ex75av6w9n20vxkn36z23mzn",
-    link: "https://link.trustwallet.com/send?coin=0&address=bc1q3d0h3s2zspaw32ex75av6w9n20vxkn36z23mzn",
+    address: "bc1qucs9tswvdae8tc2wqhdpt7dm0ady4ccq8quawq",
+    link: "https://link.trustwallet.com/send?coin=0&address=bc1qucs9tswvdae8tc2wqhdpt7dm0ady4ccq8quawq",
   },
   ethereum: {
     id: 2,
     title: "Ethereum",
     image: qr2,
-    network: "Erc 20",
-    address: "0xA2035847428DD26Cc312c98Fb105930395e7f0cc",
-    link: "https://link.trustwallet.com/send?coin=60&address=0xA2035847428DD26Cc312c98Fb105930395e7f0cc",
+    network: "ETH",
+    address: "0xF8E5828df8657508e40B6bD796ff381cA8E3BBb7",
+    link: "https://link.trustwallet.com/send?coin=60&address=0xF8E5828df8657508e40B6bD796ff381cA8E3BBb7",
   }};
 
 

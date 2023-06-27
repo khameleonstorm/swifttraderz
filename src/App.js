@@ -10,8 +10,6 @@ import Login from './pages/login/Login';
 import ForgotPassword from './pages/forgotPassword/ForgotPassword';
 import Dashboard from './pages/dashboard/Dashboard';
 import Admin from './pages/admin/Admin';
-import Shipment from './pages/shipment/Shipment';
-import TrackOrder from './pages/trackOrder/TrackOrder';
 
 function App() {
   return (
@@ -22,8 +20,6 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/plans" element={<Plans />} />
-          <Route path="/track-order/:id" element={<TrackOrder />} />
-          <Route path="/shipment" element={<Shipment />} />
           <Route path="/signUp" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
           <Route path="/forgotPassword" element={<ForgotPassword />} />
