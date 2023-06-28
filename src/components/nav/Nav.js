@@ -36,7 +36,6 @@ export default function Nav({black}) {
         {!(black) &&
           <div className={styles.menu}  style={showMenu ? {right:  "0"} : {right:  '-100%'}} onClick={handleClick}>
           <NavLink to="/">Home</NavLink>
-          <NavLink to="/shipment">Shipment</NavLink>
           <NavLink to="/about">About</NavLink>
           <NavLink to="/plans">Plans</NavLink>
 
