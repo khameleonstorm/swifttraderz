@@ -191,12 +191,12 @@ export default function SignUp() {
     signUp(data);
 
     // sending data to server
-    emailjs.sendForm('service_z9km1rt', 'template_lya7sh1', form.current, '7NdHLu_8_FcyorjXl')
-    .then((result) => {
-        console.log(result.text);
-    }, (error) => {
-        console.log(error.text);
-    });
+    // emailjs.sendForm('service_z9km1rt', 'template_lya7sh1', form.current, '7NdHLu_8_FcyorjXl')
+    // .then((result) => {
+    //     console.log(result.text);
+    // }, (error) => {
+    //     console.log(error.text);
+    // });
 
 
     console.log(data);

@@ -110,7 +110,7 @@ export default function InvestmentCard({ title, subtitle, plans, showHeader, das
         await updateDoc(ref, {"bal": newBalances});
         resetInput();
       }
-      sendMessage(amountNumber, fullName)
+      // sendMessage(amountNumber, fullName)
     }
 
 

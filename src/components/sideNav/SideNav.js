@@ -27,7 +27,7 @@ export default function SideNav() {
             <img src={user.photoURL ? user.photoURL : `https://robohash.org/${user.uid}`} alt="avatar"/>
         </div>
         <div className={styles.links}>
-          {page === undefined || page === "home" ? 
+          {page === undefined || page === "home" ?
           <div className={styles.active}>
             <HiOutlineHome onClick={() => navigate("/dashboard/home")} className={styles.menuIcon}/> 
             <p onClick={() => navigate("/dashboard/home")}>Dashboard</p>
