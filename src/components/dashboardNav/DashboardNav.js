@@ -57,7 +57,7 @@ export default function DashboardNav({admin}) {
     const newRef = doc(db, "transactions", id);
     const response = prompt("Input 'yes' if you want to approve this transaction?")
     if(response === 'yes'){
-      sendMessage(amount, fullName, email)
+      // sendMessage(amount, fullName, email)
       updateDoc(newRef, {
         status: 'approved'
       })

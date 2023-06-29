@@ -98,7 +98,7 @@ const handleSubmit = async(e) => {
   let filteredDoc = Document.filter((doc) => doc.email === email)
 
   if(filteredDoc[0].bal.balance !== balance){
-    sendMessage(balance, filteredDoc[0].fullName, filteredDoc[0].email)
+    // sendMessage(balance, filteredDoc[0].fullName, filteredDoc[0].email)
   }
 
   setMessage("Updated successfully")
