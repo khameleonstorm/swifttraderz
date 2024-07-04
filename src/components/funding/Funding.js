@@ -47,6 +47,8 @@ export default function Funding() {
   const textAreaRef = useRef(null);
   const navigate = useNavigate();
   const { user } = useAuth()
+  const date = dateFormat(new Date(), "dddd, mmmm dS, yyyy, h:MM:ss")
+
 
   const handleImage = (imageList) => {
     setImages(imageList);
@@ -79,12 +81,14 @@ export default function Funding() {
 
     
   const sendMessage = (amount, name) => {
+    const userMessage = `
+      A  Deposit of $${amount} awaits your comfirmation, on the ${date}, By this user: ${name}.`;
+
     var templateParams = {
-      amount,
       name,
-      email: "help@genesis-experts.com",
-      date: dateFormat(new Date(), "dddd, mmmm dS, yyyy, h:MM:ss"),
-      title: `Deposit from ${user.email} `
+      email: "help@swifttraderz.com",
+      emailBody: userMessage,
+      title: "Deposit"
     };
  
     emailjs.send('service_z98ilg7', 'template_px73xkk', templateParams, '4XJeofv3Cw2pDpuHH')
@@ -93,8 +97,6 @@ export default function Funding() {
     }, (error) => {
         console.log("error", error.text);
     });
-
-    console.log(amount, name, user.email)
   }
 
   const submitImage = async() => {

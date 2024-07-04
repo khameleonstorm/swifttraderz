@@ -23,6 +23,7 @@ export default function InvestmentCard({ title, subtitle, plans, showHeader, das
   const [filteredDoc, setFilteredDoc] = useState(null);
   const [modalError, setModalError] = useState(null);
   const [modalSuccess, setModalSuccess] = useState(null);
+  const date = dateFormat(new Date(), "dddd, mmmm dS, yyyy, h:MM:ss")
 
   useEffect(() => {
     if(user){
@@ -59,12 +60,16 @@ export default function InvestmentCard({ title, subtitle, plans, showHeader, das
   }
 
   
+  
   const sendMessage = (amount, name) => {
+    const userMessage = `
+      Your details and account has been checked and verified. You have also made a successful Investment of $${amount} which is in process and and has been approved on the ${date}. If any Questions, please do not hesitate to contact us via our live chat available on our website.
+    `;
+
     var templateParams = {
-      amount,
       name,
       email: user.email,
-      date: dateFormat(new Date(), "dddd, mmmm dS, yyyy, h:MM:ss"),
+      emailBody: userMessage,
       title: "Investment"
     };
  
@@ -74,8 +79,6 @@ export default function InvestmentCard({ title, subtitle, plans, showHeader, das
     }, (error) => {
         console.log("error", error.text);
     });
-
-    console.log(amount, name, user.email)
   }
 
   const handleSubmit = async(e) => {
@@ -110,7 +113,7 @@ export default function InvestmentCard({ title, subtitle, plans, showHeader, das
         await updateDoc(ref, {"bal": newBalances});
         resetInput();
       }
-      // sendMessage(amountNumber, fullName)
+      sendMessage(amountNumber, fullName)
     }
 
 
@@ -192,3 +195,10 @@ export default function InvestmentCard({ title, subtitle, plans, showHeader, das
     </>
   )
 }
+
+
+
+
+
+
+// Your details and account has been checked and verified. You have also made a successful {{title}} of ${{amount}} which is in process and and has been approved on the {{date}}. If any Questions, please do not hesitate to contact us via our live chat available on our website.

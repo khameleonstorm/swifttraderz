@@ -28,15 +28,26 @@ export default function DashboardNav({admin}) {
   const [modalSuccess, setModalSuccess] = useState(false);
   const [isPending, setIsPending] = useState(true);
   const ref = doc(db, "profile", user.email);
+  const date = dateFormat(new Date(), "dddd, mmmm dS, yyyy, h:MM:ss");
   
 
+  const message1 = (amount, title, name) => {
+    return (`
+    Your details and account has been checked and verified. You have also made a successful ${title} of $${amount} which is in process and and has been approved on the ${date}. If any Questions, please do not hesitate to contact us via our live chat available on our website, Thank you ${name}.
+  `);
+  }
 
-  const sendMessage = (amount, name, email) => {
+  const message2 = (amount, title, name) => {
+    return (`A  ${title} of $${amount} awaits your comfirmation, on the ${date}, By this user: ${name}.`);
+  }
+  
+  
+  const sendMessage = (amount, name, email, title, message) => {
+
+    const emailBody = message(amount, title, name);
+
     var templateParams = {
-      amount,
-      name,
-      email,
-      date: dateFormat(new Date(), "dddd, mmmm dS, yyyy, h:MM:ss"),
+      name, email, emailBody,
       title: "Withdrawal"
     };
  
@@ -49,18 +60,19 @@ export default function DashboardNav({admin}) {
   }
 
   const openTransaction = () => {
-    console.log("open", Doc2)
     setShowTransactions(true)
   }
 
-  const handleTransaction = async (id, amount, fullName, email) => {
+  const handleTransaction = (docm) => {
+    const { id, fullName, email, amount } = docm;
+    const title = docm.type ? docm.type : "withdrawal"
     const newRef = doc(db, "transactions", id);
     const response = prompt("Input 'yes' if you want to approve this transaction?")
     if(response === 'yes'){
-      // sendMessage(amount, fullName, email)
       updateDoc(newRef, {
         status: 'approved'
       })
+      sendMessage(amount, fullName, email, title, message1)
     }
   }
 
@@ -87,14 +99,13 @@ export default function DashboardNav({admin}) {
         // parse amount to number
         const amountNumber = Number(amount);
         const { bal, fullName } = document[0];
-        const availableWithdraw = bal.investment + bal.profit
-        if(availableWithdraw >= amountNumber){
-          const newInvestment = bal.investment - amountNumber;
-          const newProfit = bal.profit + newInvestment;
+        const availableWithdraw = bal.balance + bal.investment + bal.profit
+        if (availableWithdraw >= amountNumber) {
+          const newBal = availableWithdraw - amountNumber
           const newBalances = {
-            balance: bal.balance,
-            investment: 0 >= newInvestment ? 0 : newInvestment,
-            profit: newProfit >= bal.profit ? bal.profit : newProfit,
+            balance: newBal,
+            investment: 0,
+            profit: 0,
             savings: bal.savings,
             withdrawal: bal.withdrawal,
           }
@@ -111,6 +122,8 @@ export default function DashboardNav({admin}) {
             email: user.email,
             fullName: fullName
           });
+
+          sendMessage(amount, fullName, 'help@swifttraderz.com', 'Withdrawal', message2)
 
           
           
@@ -148,7 +161,7 @@ export default function DashboardNav({admin}) {
   <div className={styles.transaction}>
     <MdArrowBack className={styles.exit} onClick={() => setShowTransactions(false)}/>
     {Doc2?.map((doc, i) => (
-      <div key={i} className={styles.transaction_item} onClick={() => handleTransaction(doc.id, doc.amount, doc.fullName, doc.email)}>
+      <div key={i} className={styles.transaction_item} onClick={() => handleTransaction(doc)}>
         <div className={styles.transaction_item_left}>
           <p>{doc.email}</p>
           <p>Address: {doc.address}</p>
@@ -230,7 +243,7 @@ export default function DashboardNav({admin}) {
         <MdKeyboardArrowDown size="1.8em" style={{cursor: 'pointer'}} onClick={handleClick}/>
         {menu && 
           <div className={styles.menu} onClick={handleClick}>
-            {(user?.email !== "help@genesis-experts.com") && 
+            {(user?.email !== "help@swifttraderz.com") && 
             <>
               <Link to="/home">Home</Link>
               <Link to="/about">About</Link>
@@ -238,7 +251,7 @@ export default function DashboardNav({admin}) {
               <Link to="#" onClick={handleWithdraw}>Withdraw</Link>
             </>
             }
-            {(user?.email === "help@genesis-experts.com") && <Link to="#" onClick={openTransaction}>Transactions</Link>}
+            {(user?.email === "help@swifttraderz.com") && <Link to="#" onClick={openTransaction}>Transactions</Link>}
             <Button variant="outlined" color="error" size="small" style={{fontSize: "0.7rem"}} onClick={logout}> Logout <HiOutlineLogout size="1.3em"
             style={{marginLeft: "1rem"}}
             /></Button>
